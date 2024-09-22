@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForwardList
 {
-	internal class ForwardList: IEnumerable<int>
+	internal class ForwardList: IEnumerable
 	{
 		Element Head;
 		public uint Size { get; private set; }
@@ -127,17 +127,18 @@ namespace ForwardList
 			push_back(Data);
 		}
 
-		public IEnumerator<int> GetEnumerator()
-		{
-			Element Temp = Head;
-			while (Temp != null )
-			{
-				yield return Temp.Data;
-				Temp = Temp.pNext;
-			}
-		}
+		//public IEnumerator<int> GetEnumerator()
+		//{
+		//	Element Temp = Head;
+		//	while (Temp != null)
+		//	{
+		//		yield return Temp.Data;
+		//		Temp = Temp.pNext;
+		//	}
+		//}
 
-		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+		//IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+		IEnumerator IEnumerable.GetEnumerator() =>new Enumerator (Head);
 		//IEnumerator IEnumerable.GetEnumerator()
 		//{ return GetEnumerator(); }
 
