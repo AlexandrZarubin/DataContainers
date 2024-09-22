@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace ForwardList
 {
-	internal class Enumerator:IEnumerator
+	internal class Enumerator<T> : IEnumerator
 	{
-		Element Head {  get; set; }
-		public Element Temp { get; set; }
+		Element<T> Head {  get; set; }
+		public Element<T> Temp { get; set; }
 		//public Enumerator (Element temp=null)
 		//{
 		//	this.Temp = temp;
 		//  Console.WriteLine($"EnumConstructor:\t{GetHashCode()}");
 		//}
-		public Enumerator(Element Head = null)
+		public Enumerator(Element<T> Head = null)
 		{
 			this.Head = Head;
-			//this.Temp = null;
+			this.Temp = null;
 		}
 		~Enumerator() { Console.WriteLine($"EnumDestructor:\t{GetHashCode()}"); }
 		public object Current { get => Temp.Data; }

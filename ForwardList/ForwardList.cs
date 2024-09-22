@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ForwardList
 {
-	internal class ForwardList: IEnumerable
+	internal class ForwardList<T>:IEnumerable
 	{
-		Element Head;
+		Element<T> Head;
 		public uint Size { get; private set; }
 		public ForwardList()
 		{
@@ -44,26 +44,26 @@ namespace ForwardList
 		}*/
 
 		//public void push_front(int Data) => Head = new Element(Data, Head);
-		public void push_front(int Data)
+		public void push_front(T Data)
 		{
-			Head = new Element(Data, Head);
+			Head = new Element<T>(Data, Head);
 			Size++;
 		}
-		public void push_back(int Data)
+		public void push_back(T Data)
 		{
 			//if (Head == null) Head = new Element(Data);
 			if (Head == null) push_front(Data);
 			else
 			{
-				Element Temp = Head;
+				Element<T> Temp = Head;
 				while (Temp.pNext != null)
 					Temp = Temp.pNext;
-				Element New = new Element(Data);
+				Element<T> New = new Element<T>(Data);
 				Temp.pNext = New;
 				Size++;
 			}
 		}
-		public void insert(int Data,int Index)
+		public void insert(T Data,int Index)
 		{
 			if (Index == 0)
 			{
@@ -73,11 +73,11 @@ namespace ForwardList
 			if (Index > Size) return;
 			else
 			{
-				Element Temp = Head;
+				Element<T> Temp = Head;
 				for (int i = 0; i < Index - 1; i++)
 					if (Temp.pNext == null) break;
 					else Temp = Temp.pNext;
-				Element New = new Element(Data);
+				Element<T> New = new Element<T>(Data);
 				New.pNext = Temp.pNext;
 				Temp.pNext = New;
 				Size++; 
@@ -98,7 +98,7 @@ namespace ForwardList
 			if (Head.pNext == null) { pop_front(); Size--; } 
             else
             {
-            Element Temp = Head;
+            Element<T> Temp = Head;
 			while (Temp.pNext.pNext != null)
 			{
 				Temp = Temp.pNext;
@@ -110,7 +110,7 @@ namespace ForwardList
 		//			Methods:
 		public void Print()
 		{
-			Element Temp = Head;
+			Element<T> Temp = Head;
 			//Итератор-это указатель, при помощи которого можно получить доступ к элементам структуры данных
 			while ( Temp != null )
 			{
@@ -122,7 +122,7 @@ namespace ForwardList
 
 
 
-		public void Add(int Data)
+		public void Add(T Data)
 		{
 			push_back(Data);
 		}
@@ -138,7 +138,7 @@ namespace ForwardList
 		//}
 
 		//IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-		IEnumerator IEnumerable.GetEnumerator() =>new Enumerator (Head);
+		IEnumerator IEnumerable.GetEnumerator() =>new Enumerator<T>(Head);
 		//IEnumerator IEnumerable.GetEnumerator()
 		//{ return GetEnumerator(); }
 
@@ -156,7 +156,7 @@ namespace ForwardList
 				return;
 			}
 
-			Element Temp = Head;
+			Element<T> Temp = Head;
 			for (int i = 0; i < Index - 1; i++)
 				Temp = Temp.pNext;
 			

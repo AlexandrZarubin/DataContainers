@@ -42,12 +42,24 @@ namespace ForwardList
 			list.erase(Index);
 			list.Print();
 			*/
-			ForwardList list1 = new ForwardList() { 3, 5, 8, 13, 21 };
+			ForwardList<int> list1 = new ForwardList<int>() { 3, 5, 8, 13, 21 };
 			foreach (int i in list1)
 			{
 				Console.Write(i + "\t");
 			}
 			//list1.Print();
+			Console.WriteLine();
+			ForwardList<double> d_list = new ForwardList<double>() { 3.3, 5.5, 8.8, 13.13, 21.21 };
+			foreach (double i in d_list)
+			{
+				Console.Write(i + "\t");
+			}
+			Console.WriteLine();
+			ForwardList<string> s_list = new ForwardList<string>() { "ax","ты","ж","Ёжтыкин" };
+			foreach (string i in s_list)
+			{
+				Console.Write(i + "\t");
+			}
 			Console.WriteLine();
 		}
 	}
