@@ -6,15 +6,16 @@ using std::endl;
 
 #define tab "\t"
 #define delimetr "\n-----------------------"
+template<typename T>
 class List
 {
 	class Element
 	{
-		int Data;
+		T Data;
 		Element* pNext;
 		Element* pPrev;
 	public:
-		Element(int Data, Element* pNext = nullptr, Element* pPrev = nullptr)
+		Element(T Data, Element* pNext = nullptr, Element* pPrev = nullptr)
 			:Data(Data),pNext(pNext),pPrev(pPrev)
 		{
 			cout << "Econstructor:\t" << this << endl;
@@ -34,9 +35,9 @@ public:
 		size = 0;
 		cout << "Lconstructor:\t" << this << endl;
 	}
-	List(std::initializer_list<int> list) : List()
+	List(std::initializer_list<T> list) : List()
 	{
-		for (int value : list)
+		for (T value : list)
 			push_back(value);
 		cout << "List initializer constructor:\t" << this << endl;
 	}
@@ -51,7 +52,7 @@ public:
 		while (Head) pop_front();
 		cout << "LDestructor:\t" << this << endl;
 	}
-	void push_front(int Data)
+	void push_front(T Data)
 	{
 		if (Head == nullptr && Tail == nullptr)
 		{
@@ -103,7 +104,7 @@ public:
 		delete Temp;
 		size--;
 	}
-	void insert(int index, int Data)
+	void insert(int index, T Data)
 	{
 		if (index == 0)
 		{
@@ -175,7 +176,7 @@ int main()
 	setlocale(LC_ALL, "rus");
 	int n;
 	cout << "¬ведите размер списка: "; cin >> n;
-	List list;
+	List<int> list;
 	for (int i = 0; i < n; i++)
 	{
 		list.push_front(rand() % 100);
@@ -203,14 +204,14 @@ int main()
 	list.print();
 	cout << delimetr;
 	cout << delimetr;
-	List list11 = { 3, 5, 8, 13, 21 };
+	List<int> list11 = { 3, 5, 8, 13, 21 };
 	list11.print();
 	cout << delimetr;
 	cout << delimetr;
 	cout << delimetr;
-	List list1 = { 3, 5, 8, 13, 21 };
-	List list2 = { 34, 55, 89 };
-	List list3 = list1 + list2;
+	List<int> list1 = { 3, 5, 8, 13, 21 };
+	List<int> list2 = { 34, 55, 89 };
+	List<int> list3 = list1 + list2;
 	list1.print();
 	list2.print();
 	list3.print();
