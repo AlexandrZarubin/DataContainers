@@ -1,4 +1,5 @@
 ﻿#include<iostream>
+#include<list>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -198,12 +199,12 @@ public:
 		for (T const* it = il.begin(); it != il.end(); it++)
 			push_back(*it);
 	}
-	List(const List& other) :List()//без делегирования может падать
+	List(const List<T>& other) :List()//без делегирования может падать
 	{
 		*this = other;
 		cout << "LCopyConstructor: " << this << endl;
 	}
-	List(List&& other) :List()
+	List(List<T>&& other) :List()
 	{
 		*this = std::move(other);//явный вызов MoveAssignment
 	}
@@ -235,7 +236,7 @@ public:
 		}
 		size++;
 	}
-	List& operator=(const List& other)
+	List<T>& operator=(const List<T>& other)
 	{
 		cout << "LCopyAssignment: " << this << endl;
 		if(this == &other)return * this;
@@ -244,7 +245,7 @@ public:
 			push_back(Temp->Data);
 		return *this;
 	}
-	List& operator=(List&& other)
+	List<T>& operator=(List<T>&& other)
 	{
 		if (this == &other)return*this;
 		//Shalow coppy-поверхностное копирование
@@ -406,5 +407,22 @@ int main()
 		*it *= 10;
 	}
 	for (int i : list1)cout << i << tab; cout << endl;
+	cout << "-----------------------------------------------------------" << endl;
+	cout << "-----------------------------------------------------------" << endl;
+	List<double> d_list = { 2.7,3.14,5.1,8.3 };
+	for (double i : d_list)
+	{
+		cout << i << tab; cout << endl;
+	}
+	for (List<double>::ReversIterator it = d_list.rbegin(); it != d_list.rend(); ++it)
+		cout << *it << tab;
+	cout << endl;
+	List<std::string>s_list = { "Ах","ты","ж","ёж" };
+	for (std::string i : s_list)
+	{
+		cout << i << tab; cout << endl;
+	}
+	for (List<std::string>::ReversIterator it = s_list.rbegin(); it != s_list.rend(); ++it)
+		cout << *it << tab;
 	return 0;
 }
