@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<iomanip>
 using namespace std;
 
@@ -82,10 +82,7 @@ public:
 	{
 		return depth(this->Root);
 	}
-	void PrintTree()
-	{
-		PrintTree(this->Root, 0);
-	}
+	
 private:
 	void insert(int Data, Element* Root)
 	{
@@ -147,17 +144,7 @@ private:
 		else
 			return 1 + rightDepth;
 	}
-	void PrintTree(Element* Root, int level)const
-	{
-		if (Root == nullptr)return;
-		PrintTree(Root->pRight, level + 1);
-		for (int i = 0; i < level; i++)
-		{
-			cout << "   ";  // Îòñòóï äëÿ êàæäîãî óðîâíÿ
-		}
-		cout << Root->Data << endl;
-		PrintTree(Root->pLeft, level + 1);
-	}
+	
 	
 };
 
@@ -165,23 +152,23 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int n;
-	cout << "Ââåäèòå êîë-âî ýëåìåíòîâ: "; cin >> n;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»-Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: "; cin >> n;
 	Tree tree;
 	for (int i = 0; i < n; i++)
 	{
 		//tree.insert(rand() % 100, tree.getRoot());
 		tree.insert(rand() % 100);
 	}
-	cout << "Êîëè÷åñòâî óçëîâ â äåðåâå: " << tree.count() << endl;
-	cout << "Ñóììà âñåõ ýëåìåíòîâ â äåðåâå: " << tree.sum() << endl;
-	cout << "Ãëóáèíà äåðåâà: " << tree.depth() << endl;
-	cout << "Ìèíèìàëüíîå çíà÷åíèå â äåðåâå: " << tree.minValue() << endl;
-	cout << "Ìàêñèìàëüíîå çíà÷åíèå â äåðåâå: " << tree.maxValue() << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑƒÐ·Ð»Ð¾Ð² Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.count() << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° Ð²ÑÐµÑ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.sum() << endl;
+	cout << "Ð“Ð»ÑƒÐ±Ð¸Ð½Ð° Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.depth() << endl;
+	cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.minValue() << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.maxValue() << endl;
 	//tree.print(tree.getRoot());
 	tree.print();
 	cout << endl;
 	cout << endl;
-	cout << "Äåðåâî â âèäå ñòðóêòóðû:" << endl;
-	tree.PrintTree();
+	cout << "Ð”ÐµÑ€ÐµÐ²Ð¾ Ð² Ð²Ð¸Ð´Ðµ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹:" << endl;
+
 
 }
