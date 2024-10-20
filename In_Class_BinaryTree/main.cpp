@@ -1,6 +1,6 @@
 ﻿#include<ctime>
 #include<chrono>
-#include<iomanip>
+//#include<iomanip>
 #include<thread>
 //#include<vector>
 #include<iostream>
@@ -23,7 +23,7 @@ protected:
 		int height;						// Высота узла (для балансировки)
 	public:
 		Element(int Data, Element* pLeft = nullptr, Element* pRight = nullptr)
-			:Data(Data), pLeft(pLeft), pRight(pRight)
+			:Data(Data), pLeft(pLeft), pRight(pRight),height(1)
 		{
 #ifdef DEBUG
 			cout << "EConstructor:\t" << this << endl;
@@ -297,6 +297,7 @@ public:
 };
 #define BASE_CHECK
 //#define PERFECT_CHECK
+//
 
 void main()
 {
